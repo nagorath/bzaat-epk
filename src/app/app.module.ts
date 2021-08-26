@@ -4,15 +4,23 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { YouTubePlayerModule } from "@angular/youtube-player";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
+import { PhotoModalComponent } from '../components/photo-modal/photo-modal.component';
+
+
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PhotoModalComponent
   ],
   imports: [
     BrowserModule,
-    YouTubePlayerModule
+    YouTubePlayerModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import { PhotoModalComponent } from 'src/components/photo-modal/photo-modal.component';
+
+
 
 @Component({
   selector: 'app-root',
@@ -8,7 +12,19 @@ import { Component } from '@angular/core';
 export class AppComponent {
   selectedVideo = "QXJWiZ0VpaU"
 
+  constructor(private dialog: MatDialog) {
+
+  }
+
   onVideoSelect(videoId) {
     this.selectedVideo = videoId;
+  }
+
+  openDialog() {
+    this.dialog.open(PhotoModalComponent, {
+      data: {
+        animal: 'panda'
+      }
+    });
   }
 }
