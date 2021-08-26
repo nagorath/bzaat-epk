@@ -2,14 +2,22 @@
   <div class="header-container">
     <span>MUSIC</span>
     <span>PHOTOS</span>
+    <span>VIDEOS</span>
+    <span>BIO</span>
   </div>
   <div class="music-container">
     <div class="album-cover-container">
       <img src="../assets/album-cover.png">
     </div>
+    <div class="title-container">
+      <span class="title">MUSIC</span>
+    </div>
     <div class="player-container">
       <iframe width="800" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1206724&color=%23fa0302&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/ynagor" title="ynagor" target="_blank" style="color: #cccccc; text-decoration: none;"></a><a href="https://soundcloud.com/ynagor/sets/human-nature" title="Human Nature" target="_blank" style="color: #cccccc; text-decoration: none;"></a></div>    
     </div>
+  </div>
+  <div class="title-container">
+    <span class="title">PROMO SHOOTS</span>
   </div>
   <div class="photos-container">
     <div class="main-img-container">
@@ -25,5 +33,49 @@
         <img src="../assets/HAIM6725.jpg">
       </div>
     </div>
+  </div>
+  <div class="title-container">
+    <span class="title">VIDEOS</span>
+  </div>
+  <div class="youtube-player-wrapper">
+    <div class="player-container">
+      <youtube-player 
+        [videoId] = selectedVideo
+        suggestedQuality="highres" 
+        [height]="400" 
+        [width]="500" 
+        [startSeconds]="0">
+      </youtube-player>
+    </div>
+    <div class="thumbnails-container">
+      <img src="../assets/bos-thumbnail.jpg" [ngClass]="{'selected': selectedVideo === 'QXJWiZ0VpaU'}" (click)="onVideoSelect('QXJWiZ0VpaU')">
+      <img src="../assets/bulrul-thumbnail.jpg" [ngClass]="{'selected': selectedVideo === '4Q7Ukb0-Kk0'}" (click)="onVideoSelect('4Q7Ukb0-Kk0')">
+      <img src="../assets/tzulelet-thumbnail.jpg" [ngClass]="{'selected': selectedVideo === 'U5BH0jBW1p8'}" (click)="onVideoSelect('U5BH0jBW1p8')">
+    </div>
+  </div>
+  <div class="title-container">
+    <span class="title">BIO</span>
+  </div>
+  <div class="bio-wrapper">
+    <p>TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
+       TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST 
+       TEST TEST TEST TEST TEST TEST TEST TEST TEST </p>
+       <p>TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
+        TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST 
+        TEST TEST TEST TEST TEST TEST TEST TEST TEST </p>
+        <p>TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
+          TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST 
+          TEST TEST TEST TEST TEST TEST TEST TEST TEST </p>
+    <p>TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST </p>
+  </div>
+  <div class="title-container">
+    <span class="title">CONTACT</span>
+  </div>
+  <div class="contact-container">
+    <span class="booking-mngmt-title">BOOKING & MANAGEMENT (IL)</span>
+    <span class="text">Yotam Nagor</span>
+    <span class="text">bzaatband@gmail.com</span>
+    <span class="text">+972 544 632534</span>
+
   </div>
 </div>
