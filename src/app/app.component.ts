@@ -20,10 +20,10 @@ export class AppComponent {
     this.selectedVideo = videoId;
   }
 
-  openDialog() {
+  openDialog(imgSrc) {
     this.dialog.open(PhotoModalComponent, {
       data: {
-        animal: 'panda'
+        imgSrc
       }
     });
   }
