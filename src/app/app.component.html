@@ -1,10 +1,10 @@
 <div class="site-wrapper">
   <div class="header-container">
-    <span>MUSIC</span>
-    <span>PHOTOS</span>
-    <span>VIDEOS</span>
-    <span>BIO</span>
-    <span>CONTACT</span>
+    <span (click)="onHeaderSectionClick('.music-title', 'music')" [ngClass]="{'selected': selectedSection === 'music'}">MUSIC</span>
+    <span (click)="onHeaderSectionClick('.photos-title', 'photos')" [ngClass]="{'selected': selectedSection === 'photos'}">PHOTOS</span>
+    <span (click)="onHeaderSectionClick('.videos-title', 'videos')" [ngClass]="{'selected': selectedSection === 'videos'}">VIDEOS</span>
+    <span (click)="onHeaderSectionClick('.bio-title', 'bio')" [ngClass]="{'selected': selectedSection === 'bio'}">BIO</span>
+    <span (click)="onHeaderSectionClick('.contact-title', 'contact')" [ngClass]="{'selected': selectedSection === 'contact'}">CONTACT</span>
   </div>
   <div class="logo-container">
     <img src="../assets/logo.png">
@@ -18,14 +18,14 @@
       <p>Funkoholics unites everything that Hadar and Skippy belives in, and with that they created a new genre of music:</p>
       <p class="genre-text">PSYCHOGAGI ROCK</p>
     </div>
-    <div class="title-container">
+    <div class="title-container music-title">
       <span class="title">MUSIC</span>
     </div>
     <div class="player-container">
-      <iframe [width]="videoPlayerWidth" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1206724&color=%23fa0302&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/ynagor" title="ynagor" target="_blank" style="color: #cccccc; text-decoration: none;"></a><a href="https://soundcloud.com/ynagor/sets/human-nature" title="Human Nature" target="_blank" style="color: #cccccc; text-decoration: none;"></a></div>    
+      <iframe [width]="musicPlayerWidth" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1206724&color=%23fa0302&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/ynagor" title="ynagor" target="_blank" style="color: #cccccc; text-decoration: none;"></a><a href="https://soundcloud.com/ynagor/sets/human-nature" title="Human Nature" target="_blank" style="color: #cccccc; text-decoration: none;"></a></div>    
     </div>
   </div>
-  <div class="title-container">
+  <div class="title-container photos-title">
     <span class="title">PROMO SHOOTS</span>
   </div>
   <div class="photos-container">
@@ -60,7 +60,7 @@
       </div>
     </div>
   </div>
-  <div class="title-container">
+  <div class="title-container videos-title">
     <span class="title">VIDEOS</span>
   </div>
   <div class="youtube-player-wrapper">
@@ -69,17 +69,29 @@
         [videoId] = selectedVideo
         suggestedQuality="highres" 
         [height]="videoPlayerHeight" 
-        [width]="musicPlayerWidth" 
+        [width]="videoPlayerWidth" 
         [startSeconds]="0">
       </youtube-player>
     </div>
     <div class="thumbnails-container">
-      <img src="../assets/bos-thumbnail.jpg" [ngClass]="{'selected': selectedVideo === 'QXJWiZ0VpaU'}" (click)="onVideoSelect('QXJWiZ0VpaU')">
-      <img src="../assets/bulrul-thumbnail.jpg" [ngClass]="{'selected': selectedVideo === '4Q7Ukb0-Kk0'}" (click)="onVideoSelect('4Q7Ukb0-Kk0')">
-      <img src="../assets/tzulelet-thumbnail.jpg" [ngClass]="{'selected': selectedVideo === 'U5BH0jBW1p8'}" (click)="onVideoSelect('U5BH0jBW1p8')">
+      <swiper class="mySwiper" [slidesPerView]="3" [spaceBetween]="20" *ngIf="isMobile">
+        <ng-template swiperSlide>
+          <img src="../assets/bos-thumbnail.jpg" [ngClass]="{'selected': selectedVideo === 'QXJWiZ0VpaU'}" (click)="onVideoSelect('QXJWiZ0VpaU')">
+        </ng-template>
+        <ng-template swiperSlide>
+          <img src="../assets/bulrul-thumbnail.jpg" [ngClass]="{'selected': selectedVideo === '4Q7Ukb0-Kk0'}" (click)="onVideoSelect('4Q7Ukb0-Kk0')">
+        </ng-template>
+        <ng-template swiperSlide>
+          <img src="../assets/tzulelet-thumbnail.jpg" [ngClass]="{'selected': selectedVideo === 'U5BH0jBW1p8'}" (click)="onVideoSelect('U5BH0jBW1p8')">
+        </ng-template>
+      </swiper>
+      <img *ngIf="!isMobile" src="../assets/bos-thumbnail.jpg" [ngClass]="{'selected': selectedVideo === 'QXJWiZ0VpaU'}" (click)="onVideoSelect('QXJWiZ0VpaU')">
+      <img *ngIf="!isMobile" src="../assets/bulrul-thumbnail.jpg" [ngClass]="{'selected': selectedVideo === '4Q7Ukb0-Kk0'}" (click)="onVideoSelect('4Q7Ukb0-Kk0')">
+      <img *ngIf="!isMobile" src="../assets/tzulelet-thumbnail.jpg" [ngClass]="{'selected': selectedVideo === 'U5BH0jBW1p8'}" (click)="onVideoSelect('U5BH0jBW1p8')">
     </div>
+    <span *ngIf="isMobile" style="margin-top: 10px; color: white; font-weight: 100;">Click to select</span>
   </div>
-  <div class="title-container">
+  <div class="title-container bio-title">
     <span class="title">BIO</span>
   </div>
   <div class="bio-wrapper">
@@ -94,7 +106,7 @@
           TEST TEST TEST TEST TEST TEST TEST TEST TEST </p>
     <p>TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST </p>
   </div>
-  <div class="title-container">
+  <div class="title-container contact-title">
     <span class="title">CONTACT</span>
   </div>
   <div class="contact-container">

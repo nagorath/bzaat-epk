@@ -12,6 +12,7 @@ import { PhotoModalComponent } from 'src/components/photo-modal/photo-modal.comp
 })
 export class AppComponent  implements OnInit {
   selectedVideo = "QXJWiZ0VpaU"
+  selectedSection = ""
   musicPlayerWidth = 800;
   videoPlayerWidth = 500;
   videoPlayerHeight = 400;
@@ -30,9 +31,14 @@ export class AppComponent  implements OnInit {
     } else {
       this.isMobile = false
       this.musicPlayerWidth = 800;
-      this.musicPlayerWidth = 500;
+      this.videoPlayerWidth = 500;
       this.videoPlayerHeight = 400;
     }
+  }
+
+  onHeaderSectionClick(className, selectedSection) {
+    document.querySelector(className).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+    this.selectedSection = selectedSection;
   }
 
   onVideoSelect(videoId) {
