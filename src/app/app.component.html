@@ -11,30 +11,52 @@
   </div>
   <div class="music-container">
     <div class="album-cover-container">
-      <img src="../assets/album-cover.png">
+      <img src="../assets/album-cover.png" (click)="onPhotoClick('../assets/album-cover.png')">
+    </div>
+    <div class="album-descr-container">
+      <p>Funkoholics is Bzaat 2nd album, And a result of 5 month of intense sessions where Hadar and Skippy threw all their craziness into one direction, Music.</p>
+      <p>Funkoholics unites everything that Hadar and Skippy belives in, and with that they created a new genre of music:</p>
+      <p class="genre-text">PSYCHOGAGI ROCK</p>
     </div>
     <div class="title-container">
       <span class="title">MUSIC</span>
     </div>
     <div class="player-container">
-      <iframe width="800" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1206724&color=%23fa0302&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/ynagor" title="ynagor" target="_blank" style="color: #cccccc; text-decoration: none;"></a><a href="https://soundcloud.com/ynagor/sets/human-nature" title="Human Nature" target="_blank" style="color: #cccccc; text-decoration: none;"></a></div>    
+      <iframe [width]="videoPlayerWidth" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1206724&color=%23fa0302&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/ynagor" title="ynagor" target="_blank" style="color: #cccccc; text-decoration: none;"></a><a href="https://soundcloud.com/ynagor/sets/human-nature" title="Human Nature" target="_blank" style="color: #cccccc; text-decoration: none;"></a></div>    
     </div>
   </div>
   <div class="title-container">
     <span class="title">PROMO SHOOTS</span>
   </div>
   <div class="photos-container">
-    <div class="main-img-container">
-      <img src="../assets/HAIM6725.jpg" (click)="openDialog('../assets/HAIM6725.jpg')">
+    <swiper [navigation]="true" class="mySwiper" *ngIf="isMobile">
+      <ng-template swiperSlide>
+        <img src="../assets/PromoMain.jpg">
+      </ng-template>
+      <ng-template swiperSlide>
+        <img src="../assets/Promo1.jpg">
+      </ng-template>
+      <ng-template swiperSlide>
+        <img src="../assets/Promo2.jpg">
+      </ng-template>
+      <ng-template swiperSlide>
+        <img src="../assets/Promo3.jpg">
+      </ng-template>
+      <ng-template swiperSlide>
+        <img src="../assets/Promo4.jpg">
+      </ng-template>
+    </swiper>
+    <div class="main-img-container" *ngIf="!isMobile">
+      <img src="../assets/PromoMain.jpg" (click)="onPhotoClick('../assets/PromoMain.jpg')">
     </div>
-    <div class="more-imgs-container">
+    <div class="more-imgs-container" *ngIf="!isMobile">
       <div class="row">
-        <img src="../assets/HAIM6725.jpg">
-        <img src="../assets/HAIM6725.jpg">
+        <img src="../assets/Promo1.jpg" (click)="onPhotoClick('../assets/Promo1.jpg')">
+        <img src="../assets/Promo2.jpg" (click)="onPhotoClick('../assets/Promo2.jpg')">
       </div>
       <div class="row">
-        <img src="../assets/HAIM6725.jpg">
-        <img src="../assets/HAIM6725.jpg">
+        <img src="../assets/Promo3.jpg" (click)="onPhotoClick('../assets/Promo3.jpg')">
+        <img src="../assets/Promo4.jpg" (click)="onPhotoClick('../assets/Promo4.jpg')">
       </div>
     </div>
   </div>
@@ -46,8 +68,8 @@
       <youtube-player 
         [videoId] = selectedVideo
         suggestedQuality="highres" 
-        [height]="400" 
-        [width]="500" 
+        [height]="videoPlayerHeight" 
+        [width]="musicPlayerWidth" 
         [startSeconds]="0">
       </youtube-player>
     </div>

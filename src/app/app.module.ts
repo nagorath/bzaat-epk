@@ -7,6 +7,10 @@ import { YouTubePlayerModule } from "@angular/youtube-player";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import { PhotoModalComponent } from '../components/photo-modal/photo-modal.component';
+import { SwiperModule } from 'swiper/angular';
+
+
+
 
 
 
@@ -20,7 +24,8 @@ import { PhotoModalComponent } from '../components/photo-modal/photo-modal.compo
     BrowserModule,
     YouTubePlayerModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    SwiperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

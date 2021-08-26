@@ -32,19 +32,63 @@ $bzaat-epk-theme: mat.define-light-theme((
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($bzaat-epk-theme);
+@import "~swiper/css";
+@import '~swiper/scss/navigation';
+@import '~swiper/scss/pagination';
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
 html, body { height: 100%; }
 body {
   margin: 0;
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Raleway', sans-serif;
   background-color: #313030;
 }
 
 *{
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Raleway', sans-serif;
   box-sizing: border-box;
   direction: ltr;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-dialog-container{
+  padding: 10px 10px 4px 10px!important;
+}
+
+img{
+  border-radius: 3px;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  --swiper-theme-color: #b82e34;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
