@@ -1,4 +1,4 @@
-<div class="site-wrapper">
+<div class="site-wrapper" (scroll)="onScroll($event)">
   <div class="header-container">
     <span (click)="onHeaderSectionClick('.music-title', 'music')" [ngClass]="{'selected': selectedSection === 'music'}">MUSIC</span>
     <span (click)="onHeaderSectionClick('.photos-title', 'photos')" [ngClass]="{'selected': selectedSection === 'photos'}">PHOTOS</span>
@@ -12,6 +12,7 @@
   <div class="music-container">
     <div class="album-cover-container">
       <img src="../assets/album-cover.png" (click)="onPhotoClick('../assets/album-cover.png')">
+      <span *ngIf="!isMobile">(click to enlarge)</span>
     </div>
     <div class="album-descr-container">
       <p>Funkoholics is Bzaat 2nd album, And a result of 5 month of intense sessions where Hadar and Skippy threw all their craziness into one direction, Music.</p>
@@ -22,7 +23,8 @@
       <span class="title">MUSIC</span>
     </div>
     <div class="player-container">
-      <iframe [width]="musicPlayerWidth" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1206724&color=%23fa0302&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/ynagor" title="ynagor" target="_blank" style="color: #cccccc; text-decoration: none;"></a><a href="https://soundcloud.com/ynagor/sets/human-nature" title="Human Nature" target="_blank" style="color: #cccccc; text-decoration: none;"></a></div>    
+      <!-- <iframe [width]="musicPlayerWidth" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1206724&color=%23fa0302&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/ynagor" title="ynagor" target="_blank" style="color: #cccccc; text-decoration: none;"></a><a href="https://soundcloud.com/ynagor/sets/human-nature" title="Human Nature" target="_blank" style="color: #cccccc; text-decoration: none;"></a></div>     -->
+      <iframe [width]="musicPlayerWidth" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1315248916%3Fsecret_token%3Ds-f3Te8wIF53H&color=%23c70000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/user-608176230" title="Bzaat" target="_blank" style="color: #cccccc; text-decoration: none;"></a><a href="https://soundcloud.com/user-608176230/sets/bzaat-funkoholics-2021/s-f3Te8wIF53H" title="Bzaat - Funkoholics 2021" target="_blank" style="color: #cccccc; text-decoration: none;"></a></div>
     </div>
   </div>
   <div class="title-container photos-title">
@@ -60,6 +62,8 @@
       </div>
     </div>
   </div>
+  <span *ngIf="!isMobile" class="photos-text">(click to enlarge)</span>
+  <span *ngIf="isMobile" class="photos-text-mobile">(swipe to view more photos)</span>
   <div class="title-container videos-title">
     <span class="title">VIDEOS</span>
   </div>
@@ -76,35 +80,43 @@
     <div class="thumbnails-container">
       <swiper class="mySwiper" [slidesPerView]="3" [spaceBetween]="20" *ngIf="isMobile">
         <ng-template swiperSlide>
-          <img src="../assets/bos-thumbnail.jpg" [ngClass]="{'selected': selectedVideo === 'QXJWiZ0VpaU'}" (click)="onVideoSelect('QXJWiZ0VpaU')">
+          <img src="../assets/kc-thumbnail.png" [ngClass]="{'selected': selectedVideo === 'fIQkOBexLPE'}" (click)="onVideoSelect('fIQkOBexLPE')">
         </ng-template>
         <ng-template swiperSlide>
           <img src="../assets/bulrul-thumbnail.jpg" [ngClass]="{'selected': selectedVideo === '4Q7Ukb0-Kk0'}" (click)="onVideoSelect('4Q7Ukb0-Kk0')">
         </ng-template>
         <ng-template swiperSlide>
-          <img src="../assets/tzulelet-thumbnail.jpg" [ngClass]="{'selected': selectedVideo === 'U5BH0jBW1p8'}" (click)="onVideoSelect('U5BH0jBW1p8')">
+          <img src="../assets/bos-thumbnail.jpg" [ngClass]="{'selected': selectedVideo === 'QXJWiZ0VpaU'}" (click)="onVideoSelect('QXJWiZ0VpaU')">
         </ng-template>
       </swiper>
-      <img *ngIf="!isMobile" src="../assets/bos-thumbnail.jpg" [ngClass]="{'selected': selectedVideo === 'QXJWiZ0VpaU'}" (click)="onVideoSelect('QXJWiZ0VpaU')">
+      <img *ngIf="!isMobile" src="../assets/kc-thumbnail.png" [ngClass]="{'selected': selectedVideo === 'fIQkOBexLPE'}" (click)="onVideoSelect('fIQkOBexLPE')">
       <img *ngIf="!isMobile" src="../assets/bulrul-thumbnail.jpg" [ngClass]="{'selected': selectedVideo === '4Q7Ukb0-Kk0'}" (click)="onVideoSelect('4Q7Ukb0-Kk0')">
-      <img *ngIf="!isMobile" src="../assets/tzulelet-thumbnail.jpg" [ngClass]="{'selected': selectedVideo === 'U5BH0jBW1p8'}" (click)="onVideoSelect('U5BH0jBW1p8')">
+      <img *ngIf="!isMobile" src="../assets/bos-thumbnail.jpg" [ngClass]="{'selected': selectedVideo === 'QXJWiZ0VpaU'}" (click)="onVideoSelect('QXJWiZ0VpaU')">
     </div>
-    <span *ngIf="isMobile" style="margin-top: 10px; color: white; font-weight: 100;">Click to select</span>
+    <span *ngIf="isMobile" style="margin-top: 10px; color: white; font-weight: 100;">(click to select video)</span>
   </div>
   <div class="title-container bio-title">
     <span class="title">BIO</span>
   </div>
   <div class="bio-wrapper">
-    <p>TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
-       TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST 
-       TEST TEST TEST TEST TEST TEST TEST TEST TEST </p>
-       <p>TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
-        TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST 
-        TEST TEST TEST TEST TEST TEST TEST TEST TEST </p>
-        <p>TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
-          TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST 
-          TEST TEST TEST TEST TEST TEST TEST TEST TEST </p>
-    <p>TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST </p>
+    <p>
+      Bzaat are a Psychogagi duo based in Tel Aviv Israel, Formed in 2019 and since their formation released their debut album which gained them massive and devoted followers in Israel.
+      With hundreds of shows behind them in their home country supporting their debut album, Including tens of headlining shows and performances on the main stages of Israel’s top festivals.
+    </p>
+    <p>
+      When covid-19 took the music industry to a complete shutdown, Hadar and Skippy locked themself in the studio for five intensive months and written their sophomore album “Funkoholics”.  
+      <br>
+      The album combines everything that Bzaat believes in: Chaos, Heaviness, and Groove.
+      And throughout  52 minutes of music keeps the listener on his toes with intense and uncompromising virtuous playing.
+    </p>
+    <p class="bold">
+      Bzaat are now searching to extend their journey outside the boundaries of Israel and looking for partners in booking and management agencies, And as well a record label to release their new album with.
+    </p>
+    <div class="members-container">
+      <span class="title">BZAAT Are:</span>
+      <span class="text">Hadar Levi - Guitars</span>
+      <span class="text">Aviv Bart - Drums</span>
+    </div>
   </div>
   <div class="title-container contact-title">
     <span class="title">CONTACT</span>
